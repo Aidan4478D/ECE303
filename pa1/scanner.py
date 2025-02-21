@@ -2,7 +2,7 @@ import sys
 import socket
 import time
 import string
-from PortScanner import PortScanner, print_help
+from PortScanner import PortScanner, print_help, input_from_file
 
 # target = input('What you want to scan?: ')
 # port = int(input("Enter the port number to be scanned: "))
@@ -25,26 +25,36 @@ if len(sys.argv) > 1:
                 ip = sys.argv[i + 1]
             except:
                 print("Bad input for IP")
+                exit()
 
         if sys.argv[i] == "--input":
             try:
                 inp = sys.argv[i + 1]
             except:
                 print("Bad input for input")
+                exit()
 
         if sys.argv[i] == "--output":
             try:
                 outp = sys.argv[i + 1]
             except:
                 print("Bad input for output")
+                exit()
 
         if sys.argv[i] == "--help":
             print_help()
 
 
 start = time.time()
-ps = PortScanner(ports, ip, inp, outp)
-print(ps.scan_ports())
+
+if inp is not None:
+    input_from_file(inp, outp)
+
+else:
+    ps = PortScanner(ports, ip, outp)
+
+    results = ps.scan_ports()
+    ps.output_results(results, 'w')
 
 end = time.time()
 print(f'Time taken {end-start:.2f} seconds')

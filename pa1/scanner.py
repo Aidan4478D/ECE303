@@ -4,9 +4,6 @@ import time
 import string
 from PortScanner import PortScanner, print_help, input_from_file
 
-# target = input('What you want to scan?: ')
-# port = int(input("Enter the port number to be scanned: "))
-
 ports = None
 ip = None
 inp = None

@@ -1,21 +1,10 @@
 import socket
 
-# questions
-# - could the ports be scanned in parallel? Is that required?
-
 class PortScanner():
     def __init__(self, ports, ip, outp):
         self.ports = (ports if ports is not None else list(range(1, 1024))) 
         self.ip = (ip if ip is not None else "localhost")
         self.output = outp
-
-    def get_host_info(self):
-        try:
-            # gethostbyaddr returns a tuple (hostname, aliaslist, ipaddrlist)
-            hostname, _, _ = socket.gethostbyaddr(self.ip)
-        except socket.herror:
-            hostname = "Unknown"
-        return hostname
 
     def scan_ports(self):
         open_ports = []
@@ -47,25 +36,32 @@ class PortScanner():
             except socket.error:
                 print(f"{self.ip} not responding on port {p}")
                 continue
-
+        
         return open_ports
 
 
     def output_results(self, results, mode):
 
-        hostname = self.get_host_info()
         address = socket.gethostbyname(self.ip)
+        message = f"Host: {address} ({self.ip})\n"
+        message += f"Ports scanned: {self.ports}\n"
+        message += f"------------------OPEN PORTS-----------------\n"
+    
+        if len(results) > 0:
+            for r in results:
+                message += f"Port: {r[0]}\tService: {r[1]}\n"
+        else: 
+            message += f"There were no open ports for range scanned.\n"
         
-        message = "Port scanning complete!\n"
-        message += f"Host: {address} ({hostname})\n------------------------------------------------\n"
-        for r in results:
-            message += f"Port: {r[0]}\tService: {r[1]}\n"
+
 
         if not self.output:
-            print(message)
+            init_message = "\nPort scanning complete!\n"
+            init_message += message
+            print(init_message)
         else:
             f = open(self.output, mode)
-            f.write(message)
+            f.write(message + "\n")
             f.close()
             print(f"Sent to the output to the file: {self.output}")
 

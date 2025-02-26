@@ -42,17 +42,20 @@ if len(sys.argv) > 1:
             print_help()
 
 
-start = time.time()
+def main():
+    start = time.time()
 
-if inp is not None:
-    input_from_file(inp, outp)
+    if inp is not None:
+        input_from_file(inp, outp)
 
-else:
-    ps = PortScanner(ports, ip, outp)
+    else:
+        ps = PortScanner(ports, ip, outp)
 
-    results = ps.scan_ports()
-    ps.output_results(results, 'w')
+        results = ps.scan_ports()
+        ps.output_results(results, 'w')
 
-end = time.time()
-print(f'Time taken {end-start:.2f} seconds')
+    end = time.time()
+    print(f'Time taken {end-start:.2f} seconds')
 
+if __name__ == "__main__":
+    main()

@@ -5,24 +5,24 @@ Welcome to the simple port scanner! To start scanning, enter in your terminal:
 python3 scanner.py [option1, option2, ..., optionN]
 ```
 Where the following options are:
-`--ports <ports to scan>`
+- `--ports <ports to scan>`
     - `<ports to scan>` must be of the form `[starting scan port - ending scan port]`
     - For example, if you wanted to scan ports 1-100, you would input `--ports [1-100]`
     - The default port range being scanned is `[1-1024]`
 
-`--ip <ip to scan>`
+- `--ip <ip to scan>`
     - The ip of the ports to be scanned
     - The port scanner will scan `localhost` by default
 
-`--input <file name>`
+- `--input <file name>`
     - Will read a list of IP addresses and port ranges specified in a file and perform the same scanning analysis for each set
     - The contents of the file must be of the form `<IP address> \t <port start> \t <port end>`
 
-`--output <file name>`
+- `--output <file name>`
     - Specify a file to output content to
     - Default output is the console (stdout)
 
-`--help`
+- `--help`
     - Display a help message summarizing the tool's usage
 
 ### Files

@@ -448,3 +448,72 @@ Process:
 
 
 ## Video Streaming and Content Distribution Networks 
+**Video Streaming and CDNs**
+- Challenges: scale, heterogenity (different devices, locations, bandwidth)
+
+**Multimedia** (video)
+- Video: sequence of images displayed at constant rate
+- Ditital image: array of pixels where each pixel represented by bits
+- Coding: use redundancy within and between images to decrease number of bits to encode an image
+    - Spatial: within image
+    - Temporal: from one image to next
+
+Ex spatial. Send only `color` and `repeated_values` instead of entire row of pixels
+Ex temporal. Send differences between frames instead of a whole new frame
+
+CBR (constant bit rate): video encoding fixed rate
+VBR (variable bit rate): video encoding rate changes as amount of spatial temporal coding changes
+
+**Streaming Stored Video**
+Main challenges:
+- Server-to-client bandwidth will vary over time with changing network congestion levels
+- Packet loss, delay due to congestion will delay playout or result in poor video quality
+- Continuous playout constraint: during client video playout, playout timing must match original timing
+    - Network delays are variable (jitter) so will need client-side buffer to match continuous playout constraint
+- Client interactivity: pause, fast-forward, rewind, jump through video
+- Video packets may be lost and retransmitted
+
+Client side buffering and playout delay: compensate for network-added delay & delay jitter
+
+**Dynamic Adaptive Streaming over HTTP** (DASH)
+Server:
+- Divides video file into multiple chunks
+- Each chunk encoded at multiple different rates
+- Different rate encoding stored in different files
+- Files replicated in various CDN nodes
+- Manifest file: provides URLs for different chunks
+
+Client:
+- Periodically estimates server-to-client bandwidth
+- Consulting manifest, requests one chunk at a time
+    - Chooses max coding rate sustainable given current bandwidth
+    - Can choose different coding rates at different points in time (depending on available bandwidth at time) and from different servers
+
+I'm going to skip the rest due to time but I will come back later
+
+## Socket Programming 
+Socket = door between application process and end-end transport protocol
+
+Two types for two transport services:
+- UDP: Unreliable datagram
+- TCP: Reliable, byte stream oriented
+
+**Programming with UDP**
+- No "connection" between client and server
+    - No handshaking before sending data
+    - Sender explicitly attaches IP destination addres and port # to each packet
+    - Receiver extracts sender IP address and port # from received packet
+- Transmitted data may be lost or received out-of-order
+- Provides unreliable transfer of groups of bytes (datagrams) between client and server processes
+
+**Programming with TCP**
+- Client must contact server
+    - Server process must first be running
+    - Server must have created socket that welcomes client's contact
+- Client contacts server by:
+    - Creating TCP socket, specifying IP address & port number of server process
+    - When client creates socket: client TCP establishes connection to server TCP
+- When contacted by client, server TCP creates new socket for server process to communicate with that particular client
+    - Allows server to talk with multiple clients
+    - client sourt port # and IP address used to distinguish clients
+- Provides reliable, in-order byte-stream transfer (pipe) between client and server process

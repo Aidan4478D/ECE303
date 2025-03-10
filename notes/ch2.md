@@ -2,10 +2,20 @@
 
 - [Principles of Network Applications](#principles-of-network-applications)
 - [Web and HTTP](#web-and-http)
+- [E-Mail SMTP and IMAP](#-e-mail-smtp-and-imap)
+- [Domain Name System](#domain-name-system)
+- [P2P Applications](#p2p-applications)
+- [Video Streaming and Content Distribution Networks](#video-streaming-and-content-distribution-networks)
 
 ## Questions
 How do applications with P2P architectures have client and server processes (Ch2 slide 8)
 Explain how persistent HTTP works
+How to solve for perforamnce on slide 46
+Slide 59 SMTP interaction
+Is DNS kinda just like a big lookup table?
+DNS name resolution recursive query go over 
+What if no one in torrent has file?
+
 
 ## Principles of Network Applications
 - No need to write software for network-core devices (routers, switches, gateways, etc.)
@@ -196,3 +206,245 @@ Web Caches
 
 - Access link utilization is: avg. data rate to browsers / access link rate
     - Remember high utilization (close to 1) = large queueing delays
+- If a cache rate has a hit rate of 0.4:
+    - 40% of requests served by cache with low delay (msec)
+    - 60% of requests satisfied by origin
+
+**Conditional GET with Browser Caching**
+- Goal: don't send object if browser has up-to-date cached version
+    - No object transmission delay (or use of network resources)
+- Client: specify date of browser-cached copy in HTTP request
+- Server: response contains no object if browser-cached copy is not up-to-date
+
+HTTP2
+---
+Key goal: Decreased delay in multi-object HTTP requests
+
+HTTP1.1: introduced multiple pipelined GETs over single TCP connection
+- Server responds in-order (first come first served) to GET requests
+- With this, a small object might have to wait for transmission behind large objects (HOL blocking (head of line))
+- Loss recovery (retransmitting lost TCP segments) stalls object transmission
+
+HTTP2: Increased flexibility at server in sending objects to client
+- Methods, status codes, most header fields unchanged from HTTP 1.1
+- Transmission order of requested objects based on client-specified object priority
+- Push unrequested objects to client
+- Divide objects into frames, schedule frames to mitigate HOL blocking
+
+HTTP2 over TCP means:
+- Recovery from packet loss still stalls all object transmissions
+- No security over vanilla TCP connection
+
+HTTP3: Adds security, per object error and congestion control (more pipelining) over UDP
+- More on this in transport layer
+
+
+## E-Mail SMTP and IMAP
+**Email**
+- Three major components: user agents, mail servers, and the simple mail transfer protocol (SMTP)
+
+**User Agent**
+- Compoing, editing, reading mail messages
+- Outgoing and incoming messages stored on server
+
+**Mail Servers**
+- Mailbox contains incoming messages for user
+- Message queue of outgoing (to be sent) mail messages
+
+**SMTP Protocol**
+- Between mail servers to send email messages
+- Client: sending mail server
+- Server: receiving mail server
+
+**SMTP RFC (5321)**
+- Uses TCP to reliably transfer email message from client to server, port 25
+    - Mail server initiating connection
+    - Direct transfer: sending server (acting like client) to receiving server
+- Three phases of transfer:
+    1. Handshaking
+    2. Transfer of messages
+    3. Closure
+- Command & response interaction (like HTTP)
+    - Commands: ASCII text
+    - Response: Status code and phrase
+
+Comparison with HTTP:
+- Both have ASCII command/response interaction & status code
+- HTTP:
+    - Client pull
+    - Each object encapsulated in its own response message
+- SMTP:
+    - Client push
+    - Multiple objects sent in multipart message
+    - Uses persistent connections
+    - Requires message (header & body) to be in 7-bit ASCII
+    - Server uses CRLF to determine end of message
+
+Mail message format for SMTP defined in RFC 5321
+Syntax for e-mail message itself defined in RFC 2822 (Header Lines & Body)
+
+Mail Access Protocols
+---
+- SMTP = Delivery/storage of e-mail messages to receiver's server
+- IMAP = Provides retrieval, deletion, folders of stored messages on server
+- HTTP = Provides web-based interface on top of SMTP (to send) and IMAP (to retrieve) 
+
+
+## Domain Name System
+- A method to map between IP address and a name and vice versa
+- A *distributed database* implemented in hierarchy of many name servers
+- DNS servers communicate to resolve names (addres/name translation)
+    - Core internet function implemented as application-layer protocol
+
+**DNS Services**:
+- Hostname to IP address translation
+- Host & mail server aliasing (canonical, alias names)
+- Load distribution: Many IP addresses correspond to one name
+
+Do not centralize DNS due to:
+- It having a single point fo failure
+- A HEAVY of traffic volume
+- Distant centralized database
+- Crazy amount of maintenence
+- Would not scale to our growing needs
+
+![DNS Tree](images/ch2_dns_tree.png)
+
+- Ex. say someone wants IP address for `www.amazon.com`
+    - Client queries root server to find `.com` DNS server
+    - Client queries `.com` DNS server to get `amazon.com` DNS server
+    - Client queries `amazon.com` DNS server to get IP address for `www.amazon.com`
+
+**Root Name Servers**
+- Internet couldn't function without it
+- DNSSEC provides security (authentication, message integrity)
+- ICANN (Internet Corporation for Assigned Names and Numbers) manages root DNS domain
+
+**Top-Level Domain (TLD) servers**: 
+- Responsible for all popular domains (.com, .net, .org, etc.) and all top-level country domains
+- DNS Registrars:
+    - Network solutions: authoritative registry for .com, .net TLD
+    - Educause: .edu TLD
+
+**Authoritative DNS Servers**:
+- Organization's own DNS server(s) providing authoritative hostname to IP mappings for organization's named hosts
+- Can be maintained by organization or service provider
+
+**Local DNS Name Servers**
+- When host makes DNS query, it is sent to its *local* DNS server
+    - Local DNS server returns reply answering: recent name-to-address translation pairs and forwarding request into DNS hierarchy for resolution
+    - Each ISP has local DNS name server
+- Local DNS server doesn't strictly belong to hierarchy
+
+**DNS Name Resolution**
+- Iterated query: contacted server replies with name of server to contact
+    - "I don't know the name but ask this server"
+- Recursive query: puts burden of name resolution on contacted name server
+    - Heavy load at upper levels of hiearchy
+
+**Caching DNS Information**
+- Once any name server leans a mapping, it caches it and immediately returns a cached mapping in response to query
+    - Caching improves response time
+    - Cache entries timeout (disappear) after some time (time to live (TTL))
+    - TLD servers typically cahced in local name servers
+- Cached entries may be out-of-date
+    - If named host changes IP address may not know until TTL expires
+
+**Types of DNS Records**
+
+DNS: Distributed database storing resource records (RR) 
+- RR format: (`name`, `value`, `type`, `ttl`)
+
+- Type = A
+    - `name` = hostname
+    - `value` = IP address
+- Type = NS
+    - `name` = domain (ex. aidan.com)
+    - `value` = hostname of authoritative name server for this domain
+- Type = CNAME
+    - `name` = alias name for some "canonical" (real) name
+    - Ex. `www.ibm.com` = `servereast.backup2.ibm.com`
+    - `value` = Canonical name
+- Type = MX
+    - `value` = Name of SMTP mail server associated with `name`
+
+- DNS query and reply messages both have the same format
+    - Header has 16 bit ID and flags
+    - Name and & type fields for a query in questions
+    - RRs in response to query in answers
+    - Records for authoritative servers in authority
+    - Additional "helpful" info that may be used in additional info
+
+**How to Get into the DNS**
+- Ex. new startup "Aidan"
+- Register name aidan.com at DNS registrar (ex. Network Solutions)
+    - Provide names, IP addresses of authoritative name server (primary and secondary)
+    - Registrar inserts NS, A RRs into .com TLD server
+- Create an authoritative server locally with the IP address you want
+
+**Security**
+- DDoS attacks: bombard root servers with traffic
+    - Local DNS servers cache IPs of TLD servers allowing root server bypass
+    - There's traffic filtering in these servers
+- Spoofing Attacks: intercept DNS queries, returning bogus replies
+
+
+## P2P Applications
+**Peer to Peer Architecture**
+- No always-on server
+- End systems directly communicate with each other
+- Peers sequest service from other peers, providing service in return to other peers
+- Peers are intermittently connected and change IP addresses
+
+**Comparing Client to Server with P2P**
+Time to distribute file (size F) from one server to N peers
+- Peer upload/download capacity is a limited resource
+- Server transmission: must send (upload) N file copies
+    - Time to send N copies: N * F / t(s)
+    - In P2P it is: F / t(s)
+- Client: each client must download the copy
+    - Min client download time: F / d(min)
+    - In P2P it is: F / d(min)
+
+- For P2P, clients as aggregate must download NF bits
+    - Max upload rate is t(s) + sum(t)
+
+Total times to distribute F to N clients:
+- Client-Server approach: max(NF/t(s), F/d(min))
+- P2P approach: max(F/t(s), F/d(min), NF/(t(s) + sum(t)))
+
+- Client-Server increases linearly with N
+- P2P also increases linearly with N but each peer brings service capacity
+
+In general, they both "seem" linear but P2P adds more service as it grows, thus looking more logarithmic than the linear client-server.
+
+**BitTorrent**
+- P2P file exchanging platform
+- Peers in torrent send/receive file chunks
+- Tracker: tracks peers participating in torrent
+- Torrent: group of peers exchanging chunks of a file
+
+Process:
+- Peer joining torrent:
+    - Has no chunks, but will accumulate them over time from other peers
+    - Registers with tracker to get list of peers, connects to subset of peers ("neighbors")
+- While downloading, peer uploads chunks to other peers
+- Peer may change peers with whom it exchanges chunks
+- **Churn**: peers may come and go
+- Once peer has entire file, it may (selfishly) leave or (altruistically) remain in the torrent
+
+- Requesting Chunks:
+    - At any given time, different peers have different subsets of file chunks
+    - Periodically, client asks each peer for list of chunks they have
+    - Client requests missing chunks from peers, rarest first
+- Sending chunks (tit-for-tat):
+    - Client sends chunks to four peers currently sending them chunks at highest rate
+        - Other peers are choked by client (no chunks)
+        - Re-evaluate top four every 10 seconds
+    - Every 30 seconds randomly select another peer and start sending chunks
+        - "optimistically unchoke" peer
+        - Newly chosen peer may join top four
+    - Higher upload rate: find a better trading partner, get file faster
+
+
+## Video Streaming and Content Distribution Networks 

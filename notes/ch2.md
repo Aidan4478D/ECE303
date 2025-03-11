@@ -6,6 +6,7 @@
 - [Domain Name System](#domain-name-system)
 - [P2P Applications](#p2p-applications)
 - [Video Streaming and Content Distribution Networks](#video-streaming-and-content-distribution-networks)
+- [Socket Programming](#socket-programming)
 
 ## Questions
 How do applications with P2P architectures have client and server processes (Ch2 slide 8)

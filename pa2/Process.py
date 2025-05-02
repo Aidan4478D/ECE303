@@ -9,26 +9,20 @@ class Node():
 
 
     def accept_connection(self):
-        server_socket = socket(AF_INET, SOCK_STREAM)
+        server_socket = socket(AF_INET, SOCK_DGRAM)
         server_socket.bind(('0.0.0.0', self.my_port))
-        server_socket.listen(1)
 
-        print(f"Server on port {self.my_port} is listening!")
-
+        print(f"Server on port {self.my_port} is set up!")
         # accept a connection
         while True:
-            conn, addr = server_socket.accept()
-            sentence = conn.recv(1024).decode()
-            print(f"from client: {sentence}")
-            capital_sentence = sentence.upper()
+            sentence, client_address = server_socket.recvfrom(1024)
 
-            conn.send(capital_sentence.encode())
-            conn.close()
+            print(f"recieved from client: {sentence.decode()}")
+            capital_sentence = sentence.decode().upper()
 
-            # data = conn.recv(1024) # window size?
-            # if not data:
-                # break
-            # con.sendall(data)
+            server_socket.sendto(capital_sentence.encode(), client_address)
+
+        conn.close()
 
 
     def connect_port(self):
@@ -36,19 +30,15 @@ class Node():
             print(f"Trying to connect to port {self.their_port}")
 
             # AF_INET = internet address family for IPv4
-            # SOCK_STREAM = socket type for TCP
-            client_socket = socket(AF_INET, SOCK_STREAM)
+            # SOCK_DGRAM = socket type for TCP
+            client_socket = socket(AF_INET, SOCK_DGRAM)
             client_socket.settimeout(5)
 
-            result = client_socket.connect_ex((self.ip, self.their_port))
-            if result == 0:
-                sentence = "hello there"
-                # service = socket.getservbyport(self.their_port, 'tcp')
-                # print(f"Found service {service} for port {self.their_port}")
-                client_socket.send(sentence.encode())
+            sentence = "hello there"
+            client_socket.sendto(sentence.encode(), (self.ip, self.their_port))
 
-                modified_sentence = client_socket.recv(1024)
-                print(f"from server: ", modified_sentence.decode())
+            modified_sentence, server_address = client_socket.recvfrom(1024)
+            print(f"from server: ", modified_sentence.decode())
 
             client_socket.close()           
 

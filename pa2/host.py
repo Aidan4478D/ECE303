@@ -6,4 +6,4 @@ their_port = input("Enter their port: ")
 
 
 p = Node(ip, my_port, their_port)
-p.accept_connection()
+p.run_receiver()

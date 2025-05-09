@@ -51,6 +51,11 @@ print(f"recv ports are: {recv_ports}")
 # create a different thread for each of the recievers
 node = Node(ip, my_port, send_ports, recv_ports)
 
+# start global receiver which won't recieve messages
+# just here so that it will get the kick to start sending
+t0 = threading.Thread(target=node.run_receiver, args=(my_port, 0), daemon=False, name=f"recv-{my_port}-GLOBAL")
+t0.start()
+
 # start receiver threads unconditionally
 for port, p in recv_ports:
     # is not daemon thread so will always listen as long as program doesn't exit

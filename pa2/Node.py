@@ -23,7 +23,7 @@ class Node():
         self.send_socket.bind(('0.0.0.0', 0))
         
         self.send_port = int(self.send_socket.getsockname()[1])
-        self.send_socket.settimeout(5) # timeout at 5s so doesn't globble chat
+        self.send_socket.settimeout(0.5) # timeout at 5s so doesn't globble chat
         
         # broadcasting to fire other senders
         self.peers = set(self.send_ports) | { port for (port,_) in self.recv_ports }
@@ -155,8 +155,10 @@ class Node():
 
             # modified_sentence, server_address = client_socket.recvfrom(1024)
             # print(f"from server: ", modified_sentence.decode())
+    
 
-            send_socket.close()
+            # don't close socket or else it'll close socket if multiple ports are specified
+            # send_socket.close()
 
         except KeyboardInterrupt:
             print(f"Forced stopping sending to port {dest_port}")

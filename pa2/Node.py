@@ -1,69 +1,10 @@
 from socket import *
 import time
 import random
+import threading
 import struct
 
-
-class Packet():
-    def __init__(self, source_port, dest_port, seq_num, packet_type, data=None):
-        self.source_port = int(source_port)
-        self.dest_port = int(dest_port)
-        self.seq_num = int(seq_num)
-        self.packet_type = packet_type # 0 for probe, 1 for ACK
-        if packet_type == 0:
-            # if data is a string encode it
-            if isinstance(data, str):
-                if len(data) != 1:
-                    raise ValueError("Probe packet data must be a single character")
-                self.data = data.encode()
-
-            # if data already in bytes keep it the same
-            elif isinstance(data, bytes):
-                if len(data) != 1:
-                    raise ValueError("Probe packet data must be a single character")
-                self.data = data
-
-            else:
-                raise ValueError(f"invalid data type for probe packet: {type(data)}")
-
-        # data field empty for ACK packets
-        elif packet_type == 1:
-            self.data = None
-        else:
-            raise ValueError(f"invalid packet type: {packet_type}")
-
-    def packet_to_bytes(self):
-        # >: big endian
-        # h: short = 16 bits ==> 2 bytes
-        # i: int = 32 bits ==> 4 bytes
-        # b: char = 8 bits ==> 1 byte
-
-        # add data if it's a probe packet
-        if self.packet_type == 0:
-            data_val = self.data[0] if self.data else 0
-            header = struct.pack(">bhhib", self.packet_type, self.source_port, self.dest_port, self.seq_num, data_val)
-            return header
-
-        header = struct.pack(">bhhib", self.packet_type, self.source_port, self.dest_port, self.seq_num, 0)
-
-        return header
-
-    def bytes_to_packet(data_bytes):
-
-        if len(data_bytes) != 10:
-            raise ValueError(f"Invalid packet length: {len(data_bytes)} bytes")
-
-        packet_type, source_port, dest_port, seq_num, data_val = struct.unpack(">bhhib", data_bytes)
-
-        # check packet types ==> if probe -> add data, if ack -> return
-        if packet_type == 0:
-            data = bytes([data_val])
-            return Packet(source_port, dest_port, seq_num, 0, data)
-        elif packet_type == 1:
-            return Packet(source_port, dest_port, seq_num, 1, None)
-        else:
-            raise ValueError(f"unknown packet type: {packet_type}")
-
+from Packet import Packet
 
 class Node():
     def __init__(self, ip, my_port, send_ports, recv_ports, window_size=5):
@@ -81,15 +22,19 @@ class Node():
         self.send_socket = socket(AF_INET, SOCK_DGRAM)
         self.send_socket.bind(('0.0.0.0', 0))
         
-        # kinda sketch but I think it works
-        # limits auto chosen socket port number to be 4 digits to fit within 'h' value
-        prospective_port = int(self.send_socket.getsockname()[1])
-        while prospective_port > 9999:
-            prospective_port /= 10
-
-        self.send_port = prospective_port
-        # print(f"port name is {self.send_port}")
+        self.send_port = int(self.send_socket.getsockname()[1])
         self.send_socket.settimeout(5) # timeout at 5s so doesn't globble chat
+        
+        # broadcasting to fire other senders
+        self.peers = set(self.send_ports) | { port for (port,_) in self.recv_ports }
+        self.start_event = threading.Event()
+
+    
+    def broadcast_start(self):
+        print(f"[{self.my_port}] broadcasting START to {sorted(self.peers)}")
+        for peer in self.peers:
+            packet = Packet(self.send_port, peer, 0, 2) # send start packet
+            self.send_socket.sendto(packet.packet_to_bytes(), (self.ip, peer))
 
 
     def run_receiver(self, port, p = 0.25):
@@ -104,6 +49,17 @@ class Node():
             try:
                 packet = Packet.bytes_to_packet(data)
                 # intentionally drop every 4th packet
+
+                # if broadcast packet comes in and no thread running
+                if packet.packet_type == 2 and not self.start_event.is_set():
+                    print(f"[{self.my_port}] got GLOBAL START from {client_address[1]}")
+
+                    # immediately re-broadcast to all neighbors
+                    self.broadcast_start()
+
+                    # wake up the main thread
+                    self.start_event.set()
+                    continue
                 
                 if packet.packet_type == 0:
                     if random.random() < p:

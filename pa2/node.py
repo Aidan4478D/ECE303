@@ -43,10 +43,11 @@ print(f"recv ports are: {recv_ports}")
 node = Node(ip, my_port, send_ports, recv_ports)
 
 for port, p in recv_ports:
-    t = threading.Thread(target=node.run_receiver, args=(port, p), daemon=True, name=f"recv-{my_port}-{port}")
+    t = threading.Thread(target=node.run_receiver, args=(port, p), daemon=False, name=f"recv-{my_port}-{port}")
     t.start()
     print(f"[{my_port}] Started recv-thread on port {port} (p={p})")
 
 for port in send_ports:
     print(f"[{my_port}] Starting sender to port {port}")
     node.run_sender(port)
+    # threading.Thread(target=node.run_sender, args=(port,),daemon=True).start()

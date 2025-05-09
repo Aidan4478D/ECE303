@@ -80,13 +80,15 @@ class Node():
 
         self.send_socket = socket(AF_INET, SOCK_DGRAM)
         self.send_socket.bind(('0.0.0.0', 0))
-
+        
+        # kinda sketch but I think it works
+        # limits auto chosen socket port number to be 4 digits to fit within 'h' value
         prospective_port = int(self.send_socket.getsockname()[1])
         while prospective_port > 9999:
             prospective_port /= 10
 
         self.send_port = prospective_port
-        print(f"port name is {self.send_port}")
+        # print(f"port name is {self.send_port}")
         self.send_socket.settimeout(5) # timeout at 5s so doesn't globble chat
 
 

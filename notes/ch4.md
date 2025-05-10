@@ -106,4 +106,109 @@
         - Minimum bandwidth guarantee
 
 ## IP - Internet Protocol
+- IP address = 32-bit identifier associated with each host or router interface
+- Intercae = connection between host/router and physical link
+    - Routers typically have multiple interfaces
+    - Host typically has one or two interfaces (ex. ethernet and wifi)
+
+- Subnet = device interface that can physically reach each other without passing through an intervening router
+    - To define a subnet, detach each interface from its host or router creating "islands" of isolated networks
+    - Each isolated network is called a subnet
+- IP address strucutre:
+    - Subnet part: devices in same subnet have common high order bits
+    - Host part: remaining low order bits
+
+- CIDR: Class InterDomain Routing
+    - Subnet portion of address of arbitrary length
+    - a.b.c.d/x where x is # of bits in subnet portion of address
+
+- How does host get IP address
+    - Hard-coded by sysadmin in config file (ex. in UNIX in /etc/rc.config)
+    - **DHCP**
+
+- DHCP (Dynamic Host Configuration Protocol)
+    - Dynamically get address from server
+    - "plug-and-play"
+    - Host dynamically obtains IP address from network server when it "joins" network
+        - Can renew its lease on address in use
+        - Allows reuse of addresses (only hold address while connected/on)
+        - Support for mobile users who join/leave
+    - Overview:
+        - Host broadcasts DHCP discover message
+        - DHCP server responds with DHCP offer message
+        - Host requests IP address: DHCP request message
+        - DHCP server sends address: DHCP ACK message
+    - Can return more than just allocated IP address on subnet
+        - Address of first-hop router for client
+        - Name and IP address of DNS server
+        - Network mask (indicating network vs. host portion of address)
+
+Q: How does network get subnet part of IP address
+A: Gets allocated portion of its provider ISP's address space
+
+- Hierarchial addressing: allows efficient advertisement of routing information
+
+Q: How does an ISP get block of addresses?
+A: ICANN (Internet Corporation for Assigned Names and Numbers)
+    - ALlocates IP addresses through 5 regional regrestries (who may then allocate to local registries)
+    - Manages DNS root zone including delecation of TLD (top level domain) management
+- ICANN allocated last chunk of IPv4 addresses to RRs in 2011 (32-bit)
+- IPv6 has 128-bit address space
+
+
+- NAT: Network Address Translation
+    - All devices in local network share ONE IPv4 address as far as outside world is concerned
+    - AKA all datagrams leaving local network have same source NAT IP address but different source port numbers
+    - All devices in local network have 32-bit addresses in a "private" IP address space (10/8, 172.16/12, 192.168/16 prefixes) that can only be used in local network
+    - Advantages:
+        - Just one IP address needed from provider ISP for all devices
+        - Can change addresses of host in local network without nitifying outside world
+        - Can change ISP without changing addresses of devies in local network
+        - Security: Devices inside local net not directly addressable or visible by outside world
+    - Implementation
+        - Outgoing datagrams: replace (source IP, port) of every outgoing datagram to (NAT IP, new port)
+        - Remember in NAT translation table: evert (source IP, port) to (NAT IP, new port) translation pair
+        - Incoming datagrams: replace (NAT IP, new port) in dest fields of every incoming datagram with corresponding (source IP, port) stored in NAT table
+    - Is controversal
+        - Address "shortage" should be solved by IPv6
+        - Violates end-end argument (port # manipulation)
+    - Here to stay as it's used extensively
+
+- IPv6
+    - Initial motivation: 32-bit IPv4 address space would be completely allocated
+    - 40-byte fixed length header
+    - Enables different network-layer treatment of "flows"
+
+    - Not all routers can be upgraded simultaneously
+    - Tunneling: IPv6 datagram carried as payload in IPv4 datagram among IPv4 routers (packet within packet kinda)
+    - Google: 40% of clients access services via IPv6
+
+- Generalized forwarding: match plus action
+    - Destination-based forwarding: forward based on destination IP address
+    - Generalized forwarding: 
+        - Many header fields can determine action
+        - Many action possible: drop/copy/modify/log packet
+
+- Flow table abstraction
+    - Flow: defined by header fields
+    - Generalized forwarding: simple packet-handling rules
+        - Match: pattern values in packet header fields
+        - Actions: for matched packet: drop, forward, modify, matched packet or send matched packet to controller
+        - Priority: disambiguate overlapping patterns
+        - Counters: # bytes and # packets
+
+- OpenFlow abstraction
+    - Match + action: abstraction unifies different kinds of devices
+    - Router: 
+        - Match: Longest destination IP prefix
+        - Action: forward out a link
+    - Switch:
+        - Match: destination MAC address
+        - Action: forward or flood
+    - Firewall
+        - Match: IP addresses and TCP/UDP port numbers
+        - Action: permit or deny
+    - NAT
+        - Match: IP address and port
+        - Action: rewrite address and port
 

@@ -1,0 +1,817 @@
+[[2025-05-17 23:55:41]] Node 1111 starting...
+    my listening port: 1111
+    will send GBN probes to: [2222, 3333]
+    will receive GBN probes from (port, p_drop): []
+[[2025-05-17 23:55:41]] Node 1111 Initialized Routing Table and Direct Link Costs:
+[[2025-05-17 23:55:41]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.00) -> Node 2222
+- (0.00) -> Node 3333
+------------------------------
+[[2025-05-17 23:55:41]] Node 1111 GBN_SEND -> 2222: Thread started.
+[[2025-05-17 23:55:41]] Node 1111 GBN_SEND -> 2222: Waiting for global start event...
+[[2025-05-17 23:55:41]] Node 1111 GBN_SEND -> 3333: Thread started.
+[[2025-05-17 23:55:41]] Node 1111 GBN_SEND -> 3333: Waiting for global start event...
+[[2025-05-17 23:55:41]] Node 1111: Waiting for GBN START signal
+[[2025-05-17 23:55:49]] Node 1111 broadcasting GBN START to [2222, 3333]
+[[2025-05-17 23:55:49]] Node 1111 GBN_SEND -> 3333: Global start event received, proceeding.
+[[2025-05-17 23:55:49]] Node 1111 GBN_SEND -> 2222: Global start event received, proceeding.
+[[2025-05-17 23:55:49]] Node 1111: GBN START signal processed by main thread.
+[[2025-05-17 23:55:50]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:55:50]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:50]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:50]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.00) -> Node 2222
+- (0.00) -> Node 3333
+- (0.00) -> Node 4444 ; Next hop -> Node 3333
+------------------------------
+[[2025-05-17 23:55:51]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:51]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:51]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.00) -> Node 2222
+- (0.00) -> Node 3333
+- (0.00) -> Node 4444 ; Next hop -> Node 3333
+------------------------------
+[[2025-05-17 23:55:53]] Node 1111: Table received from Node 2222
+[1747540554.618] Node 1111 --> Node 3333: 45/61 probes lost, loss rate 0.74
+[[2025-05-17 23:55:54]] Node 1111: Routing table entry for direct peer 3333 updated to GBN cost 2.81.
+[1747540554.618] Node 1111 --> Node 2222: 40/99 probes lost, loss rate 0.40
+[[2025-05-17 23:55:54]] Node 1111: Routing table entry for direct peer 2222 updated to GBN cost 0.68.
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:55]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.81) -> Node 3333
+- (6.02) -> Node 4444 ; Next hop -> Node 3333
+------------------------------
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:55]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:55]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:55]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:55]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:55]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:55]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:55]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:55]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:55]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:55]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:55]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:55]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:55]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:55]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:55]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:55]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:55:56]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:56]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:56]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:55:57]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:55:57]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:55:57]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:57]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:57]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:55:58]] Node 1111 GBN_SEND -> 2222: Transmitted "hello" 20 times (101).
+[[2025-05-17 23:55:58]] Node 1111 GBN_SEND -> 2222: Thread stopping.
+[[2025-05-17 23:55:58]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:55:58]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:55:58]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:55:58]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (1.83) -> Node 3333 ; Next hop -> Node 2222
+- (5.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[1747540559.645] Node 1111 --> Node 3333: 50/64 probes lost, loss rate 0.78
+[[2025-05-17 23:56:00]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:00]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:00]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:00]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:00]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.10) -> Node 3333 ; Next hop -> Node 2222
+- (8.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:00]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:00]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:00]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:00]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:00]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:00]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:00]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.10) -> Node 3333 ; Next hop -> Node 2222
+- (8.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:00]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:00]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:00]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:00]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:00]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:00]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.10) -> Node 3333 ; Next hop -> Node 2222
+- (8.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:00]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:00]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:00]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:00]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.10) -> Node 3333 ; Next hop -> Node 2222
+- (8.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:00]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:00]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:00]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:00]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.10) -> Node 3333 ; Next hop -> Node 2222
+- (8.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:00]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:00]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:00]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:00]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.10) -> Node 3333 ; Next hop -> Node 2222
+- (8.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:01]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:01]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:01]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.10) -> Node 3333 ; Next hop -> Node 2222
+- (8.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:02]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:02]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:02]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:02]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:02]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.10) -> Node 3333 ; Next hop -> Node 2222
+- (8.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:03]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:03]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:03]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:03]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.10) -> Node 3333 ; Next hop -> Node 2222
+- (8.04) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[1747540564.662] Node 1111 --> Node 3333: 50/65 probes lost, loss rate 0.77
+[[2025-05-17 23:56:05]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:05]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:05]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:05]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:05]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.65) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:05]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:05]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:05]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:05]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:05]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:05]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.65) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:05]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:05]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:05]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:05]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:05]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.65) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:05]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:05]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:05]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:05]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.65) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:05]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:05]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:05]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:05]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:05]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:05]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.65) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:05]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:05]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:05]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:05]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.65) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:06]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:06]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:06]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.65) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:07]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:07]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:07]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:07]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:07]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.65) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:08]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:08]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:08]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:08]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.65) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[1747540569.679] Node 1111 --> Node 3333: 50/57 probes lost, loss rate 0.88
+[[2025-05-17 23:56:10]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:10]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:10]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:10]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:10]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.60) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:10]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:10]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:10]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:10]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:10]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:10]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.60) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:10]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:10]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:10]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:10]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.60) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:11]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:11]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:11]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.60) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:12]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:12]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:12]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:12]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:12]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.60) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:13]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:13]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:13]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:13]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.60) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[1747540574.696] Node 1111 --> Node 3333: 50/59 probes lost, loss rate 0.85
+[[2025-05-17 23:56:15]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:15]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:15]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:15]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:15]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.80) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:15]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:15]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:15]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:15]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:15]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:15]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.80) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:15]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:15]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:15]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:15]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.80) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:16]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:16]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:16]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.80) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:17]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:17]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:17]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:17]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:17]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.80) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:18]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:18]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:18]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:18]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.80) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[1747540579.714] Node 1111 --> Node 3333: 50/62 probes lost, loss rate 0.81
+[[2025-05-17 23:56:20]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:20]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:20]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:20]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:20]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:20]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.14) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:20]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:20]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:20]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:20]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:20]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.14) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:20]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:20]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:20]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:20]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.14) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:21]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:21]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:21]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.14) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:22]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:22]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:22]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:22]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:22]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.14) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:23]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:23]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:23]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:23]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.14) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[1747540584.731] Node 1111 --> Node 3333: 45/53 probes lost, loss rate 0.85
+[[2025-05-17 23:56:25]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:25]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:25]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:25]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:25]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.23) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:25]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:25]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:25]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:25]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:25]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.23) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:25]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:25]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:25]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:25]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:25]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.23) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:26]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:26]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:26]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.23) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:27]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:27]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:27]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:27]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:27]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.23) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:28]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:28]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:28]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:28]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.23) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[1747540589.746] Node 1111 --> Node 3333: 50/57 probes lost, loss rate 0.88
+[[2025-05-17 23:56:30]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:30]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:30]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:30]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:30]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.53) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:30]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:30]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:30]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:30]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:30]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:30]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.53) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:30]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:30]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:30]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:30]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.53) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:31]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:31]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:31]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.53) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:32]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:32]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:32]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:32]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:32]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.53) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:33]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:33]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:33]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:33]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.53) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[1747540594.765] Node 1111 --> Node 3333: 50/61 probes lost, loss rate 0.82
+[[2025-05-17 23:56:35]] Node 1111 GBN_SEND -> 3333: Transmitted "hello" 20 times (101).
+[[2025-05-17 23:56:35]] Node 1111 GBN_SEND -> 3333: Thread stopping.
+[[2025-05-17 23:56:35]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:35]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:35]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:35]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:35]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.84) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:35]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:35]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:35]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:35]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:35]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:35]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.84) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:35]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:35]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:35]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:35]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.84) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:36]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:36]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:36]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.84) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:37]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:37]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:37]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:37]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:37]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.84) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:38]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:38]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:38]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:38]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (7.84) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:40]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:40]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:40]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:40]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:40]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:40]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.17) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:40]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:40]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:40]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:40]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.17) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:40]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:40]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:40]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:40]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:40]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.17) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:41]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:41]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:41]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.17) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:42]] Node 1111: Table received from Node 3333
+[[2025-05-17 23:56:42]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:42]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:42]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:42]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.17) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+[[2025-05-17 23:56:43]] Node 1111: Table received from Node 2222
+[[2025-05-17 23:56:43]] Node 1111: Table sent to Node 3333
+[[2025-05-17 23:56:43]] Node 1111: Table sent to Node 2222
+[[2025-05-17 23:56:43]] Node 1111 Routing Table
+- (0.00) -> Node 1111
+- (0.68) -> Node 2222
+- (2.47) -> Node 3333 ; Next hop -> Node 2222
+- (8.17) -> Node 4444 ; Next hop -> Node 2222
+------------------------------
+
+[[2025-05-17 23:57:58]] Node 1111: Ctrl+C detected! Shutting down node...
+[[2025-05-17 23:57:58]] Node 1111 shutting down...
+[[2025-05-17 23:57:58]] Node 1111 shutdown sequence complete.
+[[2025-05-17 23:57:58]] Node 1111: Exiting main program.
+[[2025-05-17 23:57:58]] Node 1111: Main thread finished.
+[[2025-05-17 23:57:58]] Node 1111 Master receiver exception: unknown packet type in bytes_to_packet: 117 with data 'b'unblock'' from ('127.0.0.1', 39067)
